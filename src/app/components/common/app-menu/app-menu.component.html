@@ -1,0 +1,38 @@
+<ng-container *ngIf="loginUser">
+  <ng-container *ngIf="loginUser.role == '1'; then admin; else user" >
+  </ng-container>
+</ng-container>
+
+<ng-template #admin>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/import">Import Data</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/companies">Manage Company</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/exchanges">Manage Exchange</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/ipos">Update IPO details</a>
+        </li>
+    </ul>
+</ng-template>
+
+<ng-template #user>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user/ipos">IPOs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user/compare-company">Compare Company</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user/compare-sector">Compare Sectors</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/user/update">My Profile</a>
+        </li>
+    </ul>
+</ng-template>

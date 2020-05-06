@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-9"></div>
+    <div class="col-3" style="text-align:right;">
+      <a class="btn btn-primary" routerLink="/admin/add-company" role="button">New Company</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <app-shared-data-table 
+          [title]='title' 
+          [data]='companies' 
+          [columns]='columns' 
+          [selection]='selection'
+          enableFilter=true
+          (selectEmiter)="onSelectEmiter($event)">
+      </app-shared-data-table>    
+    </div>
+  </div>

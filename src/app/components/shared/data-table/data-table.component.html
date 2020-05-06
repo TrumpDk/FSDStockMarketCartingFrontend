@@ -1,0 +1,130 @@
+<ng-container *ngIf="data == null || data == undefined; then loadData; else elseIf1"></ng-container>
+<ng-template #elseIf1>
+    <ng-container *ngIf="data.length == 0; then noData; else displayData"></ng-container>
+</ng-template>
+<ng-template #displayData>
+    <div class="mar-t-1">
+        <h4 *ngIf="title">{{title}}</h4>
+        <ng-container *ngIf="enableFilter">
+            <div class="row data-table-filter">
+                <div class="col-1">
+                    <img src="../../../../assets/images/search.png"/>
+                </div>
+                <div class="col-11">
+                    <input type="text" class="form-control input-filter" (keyup)="applyFilter($event.target.value)"  placeholder="Filter"/>
+                </div>
+            </div>           
+        </ng-container>
+        <div class="table-container shadow-raised">
+            <table mat-table matSort
+                   id="{{id}}"
+                   [dataSource]="dataSource"
+                   class="mat-elevation-z8 table table-compact striped centered  hover">
+                <ng-container *ngFor="let col of columns;" matColumnDef="{{col.keyName}}">
+                    <ng-container *ngIf="col.isSort; then sort; else notSort"></ng-container>
+                    <ng-container *ngIf="col.dataType === 'action'; then action; else elseIf1"></ng-container>
+                    <ng-template #elseIf1>
+                        <ng-container *ngIf="col.dataType === 'link'; then link else normal"></ng-container>
+                    </ng-template>
+
+                    <ng-template #sort>
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{col.displayLabel}}</th>
+                    </ng-template>
+                    <ng-template #notSort>
+                        <th mat-header-cell *matHeaderCellDef>{{col.displayLabel}}</th>
+                    </ng-template>
+                    <ng-template #action>
+                        <td mat-cell *matCellDef="let element">
+                            <!-- <app-shared-data-table-column-link [routerLink]="col.routerLink"
+                                                                queryParamNeeded=true
+                                                                [queryParamKey]="col.keyName"
+                                                                [queryParamValue]="element[col.keyName]"
+                                                                [displayLabel]="element[col.keyName]">
+                            </app-shared-data-table-column-link> -->
+                        </td>
+                    </ng-template>
+
+                    <ng-template #link>
+                        <td mat-cell *matCellDef="let element">
+                            <app-shared-data-table-column-link [routerLink]="col.linkParam.routerLink"
+                                                               queryParamNeeded=true
+                                                               [queryParamKey]="col.keyName"
+                                                               [queryParamValue]="element[col.keyName]"
+                                                               [displayLabel]="col.linkParam.linkLabel">
+                            </app-shared-data-table-column-link>
+                        </td>
+                    </ng-template>
+
+                    <ng-template #normal>
+                        <ng-container *ngIf="!col.formatter || col.formatter === ''; else formatValue">
+                            <td mat-cell *matCellDef="let element">{{element[col.keyName]}}</td>
+                        </ng-container>
+                        <ng-template #formatValue>
+                            <td mat-cell *matCellDef="let element">formatter</td>
+                        </ng-template>
+                    </ng-template>
+                </ng-container>
+                <ng-container matColumnDef="checkbox">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <label class="input-checkbox">
+                            <input type="checkbox" id="form-select-all-{{id}}" (change)="selectAll()">
+                            &nbsp;&nbsp;<div class="input-control"></div>
+                        </label>
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        <label class="input-checkbox">
+                            <input type="checkbox" name="resultList-{{id}}"
+                                   value={{element[columns[0].keyName]}}
+                                   [checked]="element['checked']"
+                                   (change)="updateSelectedCheckbox($event, element)">
+                            <div class="input-control"></div>
+                        </label>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="radio">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <div class="input-container">
+                        <div class="input-radio-group">
+                            <td mat-cell *matCellDef="let element; let i=index;">
+                                <div class="input-radio">
+                                    <label for="element-{{id}}-{{i}}">
+                                        <input type="radio"
+                                               class="input"
+                                               id="element-{{id}}-{{i}}"
+                                               name="radioInput-{{id}}"
+                                               [value]="element[columns[0].keyName]"
+                                               (change)="updateSelectedRadio($event,element)">
+                                        <div class="input-control"></div>
+                                    </label>
+                                </div>
+                            </td>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+            </table>
+        </div>
+    </div>
+</ng-template>
+<ng-template #loadData>
+    <div class="row bg-neutral-1 shadow-raised mar-t-1 mar-b-1">
+        <div class="loader-container loader-blue pad-2">
+            <div class="loader"></div>
+            <div class="loader-header">Loading data...</div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #noData>
+    <div class="row bg-neutral-1 shadow-raised mar-t-1 mar-b-1">
+        <br />
+        <div class="col-4"></div>
+        <div class="col-4 text-align-center">No Record Found.</div>
+        <br /><br />
+    </div>
+</ng-template>
+<mat-paginator id="paginator-{{id}}"
+               [pageSize]="10"
+               showFirstLastButtons>
+</mat-paginator>

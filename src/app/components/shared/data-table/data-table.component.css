@@ -1,0 +1,11 @@
+.input-filter {
+    font-size: 14px;
+    width: 60%;
+}
+td.mat-cell{
+    border-bottom-width: 0px;
+}
+
+div.data-table-filter{
+    margin-bottom: 1rem;
+}

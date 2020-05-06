@@ -1,0 +1,91 @@
+<h3>Add Company</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+          <label for="input-company-name">Company Name:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" [(ngModel)]="company.companyName" class="form-control" id="input-company-name" placeholder="Name"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+          <label for="input-company-ceo">CEO Name:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" [(ngModel)]="company.ceo" class="form-control" id="input-company-ceo" placeholder="CEO Name"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+          <label for="input-company-board-directors">Board Member:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" [(ngModel)]="company.boardDirectors" class="form-control" id="input-company-board-directors" placeholder="Board Member"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+          <label for="input-company-turnover">Turnover:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" [(ngModel)]="company.turnover" class="form-control" id="input-company-turnover" placeholder="Turnover"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+          <label for="input-company-listed-exchange">Listed Exchange:</label>
+        </div>
+        <div class="col-6">
+            <select class="custom-select" id="input-company-listed-exchange" [(ngModel)]="company.listedStockExchanges">
+                <option selected value ="">Choose...</option>
+                <option *ngFor="let se of stockExchanges;" [value]="se.stockExchange">{{se.stockExchange}}-{{se.brief}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+          <label for="input-company-sector">Stock Sector:</label>
+        </div>
+        <div class="col-6">
+            <select class="custom-select" id="input-company-sector" [(ngModel)]="company.sectorCode">
+                <option selected value ="">Choose...</option>
+                <option *ngFor="let sector of sectors;" [value]="sector.sectorCode">{{sector.sectorName}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+          <label for="input-company-stock-code">Stock Code:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" [(ngModel)]="company.stockCodes" class="form-control" id="input-company-stock-code" placeholder="Stock Code"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+          <label for="input-company-brief">Brief Description:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" [(ngModel)]="company.brief" class="form-control" id="input-company-brief" placeholder="Brief"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+          <button type="button" class="btn btn-primary" id ="btn-add-company" (click)="addCompany()">Save</button>
+        </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-primary" id ="btn-reset" (click)="reset()">Reset</button>
+        </div>
+        <div class="col-2">
+            <a class="btn btn-primary" routerLink="/admin/companies" role="button">Return</a>
+        </div>
+    </div>
+</div>
+

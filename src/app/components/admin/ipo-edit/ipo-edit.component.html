@@ -1,0 +1,75 @@
+<h3>Edit IPO Detail Screen</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+          <label for="input-company-name">Company Name:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" [(ngModel)]="ipoDetail.companyName" class="form-control" id="input-user-real-name" placeholder="Name"/>
+            <!-- <select class="custom-select" id="input-company-name" [(ngModel)]="ipoDetail.companyId">
+                <option selected value ="">Choose...</option>
+                <option *ngFor="let company of companies;" [value]="company.companyId">{{company.companyName}}</option>
+            </select> -->
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-2">
+          <label for="input-stock-exchange">Stock Exchange:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" [(ngModel)]="ipoDetail.exchangeName" class="form-control" id="input-user-email" placeholder="Stock Exchange"/>
+            <!-- <select class="custom-select" id="input-stock-exchange" [(ngModel)]="ipoDetail.exchangeCode">
+                <option selected value ="">Choose...</option>
+                <option *ngFor="let se of stockExchages;" [value]="se.stockExchange">{{se.brief}}</option>
+            </select> -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+          <label for="input-user-login-name">Price Per Share:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" readonly [(ngModel)]="ipoDetail.pricePerShare" class="form-control" id="input-user-login-name" placeholder="Price Per Share"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+          <label for="input-user-login-name">Total number of Shares:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" readonly [(ngModel)]="ipoDetail.shareCount" class="form-control" id="input-user-login-name" placeholder="Total number of Shares"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+          <label for="input-user-login-name">Open Date Time:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" readonly [(ngModel)]="ipoDetail.openDate" class="form-control" id="input-user-login-name" placeholder="Open Date"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+          <label for="input-user-login-name">Remarks:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" readonly [(ngModel)]="ipoDetail.remark" class="form-control" id="input-user-login-name" placeholder="Remarks"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+          <button type="button" class="btn btn-primary" id ="btn-user-register" (click)="saveIPO()">Save</button>
+        </div>
+        <div class="col-3">
+            <a class="btn btn-primary" routerLink="/admin/ipos" role="button">Return</a>
+        </div>
+    </div>
+</div>
+

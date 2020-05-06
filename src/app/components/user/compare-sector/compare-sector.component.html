@@ -1,0 +1,87 @@
+<h3>Compare Sector Chart</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+          <label for="input-company-name">Compare Type:</label>
+        </div>
+        <div class="col-6">
+            <label for="input-company-name">Sector</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+          <label for="input-stock-exchanges">Select Stock Exchange:</label>
+        </div>
+        <div class="col-6">
+            <select class="custom-select" id="input-stock-exchanges" [(ngModel)]="selectedStockExchange">
+                <option selected value ="">Choose...</option>
+                <option *ngFor="let se of stockExchanges;" [value]="se.stockExchange">{{se.stockExchange}}-{{se.brief}}</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- <div class="row">
+        <div class="col-3">
+          <label for="input-company-name">Company Name:</label>
+        </div>
+        <div class="col-6">
+            <select class="custom-select" id="input-company-name" [(ngModel)]="selectedCompanyStockCode">
+                <option selected value ="">Choose...</option>
+                <option *ngFor="let company of companies;" [value]="company.stockCodes">{{company.companyName}}</option>
+            </select>
+        </div>
+    </div>  -->
+
+    <div class="row">
+        <div class="col-3">
+          <label for="input-company-sector">Stock Sector:</label>
+        </div>
+        <div class="col-6">
+            <select class="custom-select" id="input-company-sector" [(ngModel)]="selectedStockSector">
+                <option selected value ="">Choose...</option>
+                <option *ngFor="let sector of sectors;" [value]="sector.sectorCode">{{sector.sectorName}}</option>
+            </select>
+        </div>
+    </div> 
+
+    <div class="row">
+        <div class="col-1">
+          <label for="input-company-name">From Period:</label>
+        </div>
+        <div class="col-3">
+                <input type="input" [(ngModel)]="fromDate" class="form-control"/>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-1">
+            <label for="input-company-name">To Period:</label>
+        </div>
+        <div class="col-3">
+            <input type="input" [(ngModel)]="toDate" class="form-control"/>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-3">
+          <button type="button" class="btn btn-primary btn-block" id ="btn-add-company" (click)="generateMap()">Generate Map</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <app-shared-chart [config]="pieConfig"></app-shared-chart>
+        </div>
+        <div class="col-6">
+            <app-shared-chart [config]="barConfig" ></app-shared-chart>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-6">
+                <app-shared-chart [config]="lineConfig"></app-shared-chart>
+            </div>
+    </div>
+
+</div>

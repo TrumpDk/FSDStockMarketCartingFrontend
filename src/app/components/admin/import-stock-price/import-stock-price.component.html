@@ -1,0 +1,17 @@
+<h3>Import Stock Price</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-10 mt-5 mb-3">
+            <input multiple="true" type="File"  name="file" id="general-file-upload" accept=".xls,.xlsx" 
+                  (change)="fileSelectionChange($event)">
+            <button class="btn btn-primary" type="button" id="inputGroupFileAddon04" (click)="uploadStockPrice()">Upload</button>
+        </div>
+          
+    </div>
+    <div class="row">
+      <div class="col-10">
+          <button type="button" class="btn btn-link" (click)="downloadSample()">Click here to download the sampl Excel file</button>
+      </div>
+    </div>
+</div>
+

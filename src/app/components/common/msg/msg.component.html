@@ -1,0 +1,7 @@
+<div *ngIf="msg != null">
+    <div *ngIf="msg[1] != null && msg[1].length > 0">
+        <div class="col-12 alert alert-{{msg[0]}}">
+            <p>{{msg[1]}}</p>
+        </div>
+    </div>
+</div>

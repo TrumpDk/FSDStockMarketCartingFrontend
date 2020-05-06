@@ -1,0 +1,58 @@
+<h3>Registration Screen</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+          <label for="input-user-real-name">Name:</label>
+        </div>
+        <div class="col-md-6">
+            <input type="text" [(ngModel)]="user.realName" class="form-control" id="input-user-real-name" placeholder="Name"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+          <label for="input-user-email">Email:</label>
+        </div>
+        <div class="col-md-6">
+            <input type="text" [(ngModel)]="user.email" class="form-control" id="input-user-email" placeholder="Email"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+          <label for="input-user-login-name">Username:</label>
+        </div>
+        <div class="col-md-6">
+            <input type="text" [(ngModel)]="user.loginName" class="form-control" id="input-user-login-name" placeholder="Login Name"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+          <label for="input-user-login-pwd">Password:</label>
+        </div>
+        <div class="col-md-6">
+            <input type="password" [(ngModel)]="user.password" class="form-control" id="input-user-login-pwd" placeholder="Password"/>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="btn-group" id="radio-user-role">
+            <label class="btn btn-default">
+              <input type="radio" class="toggle" value="1" [(ngModel)]="user.role" name="role" (change)="checkRole('1')"> Admin
+            </label>
+            <label class="btn btn-default">
+              <input type="radio" class="toggle" value="2" [(ngModel)]="user.role" name="role" (change)="checkRole('2')"> User
+            </label>
+        </div>
+    </div> -->
+
+    <div class="row">
+        <div class="col-md-2 col-md-offset-3">
+          <button type="button" class="btn btn-primary" id ="btn-user-register" (click)="userRegister()">Register</button>
+        </div>
+        <div class="col-md-2 col-md-offset-3">
+            <button type="button" class="btn btn-primary" id ="btn-reset" (click)="reset()">Reset</button>
+        </div>
+        <div class="col-md-2 col-md-offset-3">
+            <button type="button" class="btn btn-primary" id ="btn-reset" (click)="toLoginPage()">Login</button>
+        </div>
+    </div>
+</div>
